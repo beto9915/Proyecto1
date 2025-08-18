@@ -1,4 +1,7 @@
 def Ordenar(productos, clave="codigo"):
+    if not productos:
+        print("No hay productos registrados")
+        return []
     lista_productos=[{"codigo":cod,**datos} for cod, datos in productos.items()]
     def ordenador(lista):
         if len(lista) <= 1:
@@ -12,6 +15,9 @@ def Ordenar(productos, clave="codigo"):
 
 
 def Buscar_Producto(productos,codigo=None,nombre=None,categoria=None):
+    if not productos:
+        print("No hay productos registrados")
+        return []
     resultados=[]
     lista_productos=[
         {"codigo":cod,**datos} for cod, datos in productos.items()
@@ -26,6 +32,8 @@ def Buscar_Producto(productos,codigo=None,nombre=None,categoria=None):
         if categoria and categoria.lower() in producto["categoria"].lower():
             resultados.append(producto)
             continue
+    if not resultados:
+        print("No se encontro ninguna coincidencia")
     return resultados
 
 class Program:
