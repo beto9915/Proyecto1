@@ -123,8 +123,8 @@ class Inventario:
         if codigo in self.inventario.keys():
             stock=int(input("Ingrese nuevo stock: "))
             precio=float(input("Ingrese nuevo precio: "))
-            self.inventario[codigo][stock]=stock
-            self.inventario[codigo][precio]=precio
+            self.inventario[codigo].stock=stock
+            self.inventario[codigo].precio=precio
             print("Producto actualizado con exito! "*3)
         else:
             print("producto no encontrado...")
