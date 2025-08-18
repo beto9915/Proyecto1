@@ -162,4 +162,5 @@ class Inventario:
             print("\npresione ENTER para continuar...")
             input()
             return
+
 Program.main()
