@@ -81,6 +81,12 @@ class Program:
                             return
                         else:
                             print("Opcion invalida")
+                        if resultados:
+                            print("\nResultados de la busqueda")
+                            for prod_dict in resultados:
+                                p=Producto(**prod_dict)
+                                p.mostrar_producto()
+
                         pass
                     case 4:
                         aux = int(input("""Desea:
