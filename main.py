@@ -85,6 +85,12 @@ class Program:
                             products.mostrar_producto()
                         pass
                     case 3:
+                        print("Como desea buscar el producto?")
+                        print("1. Por codigo")
+                        print("2. Por nombre")
+                        print("3. Por categoria")
+                        tipo=int(input("Seleccione: "))
+
                         pass
                     case 4:
                         aux = int(input("""Desea:
