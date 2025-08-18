@@ -54,7 +54,7 @@ class Program:
                         print("1. Por codigo")
                         print("2. Por nombre")
                         print("3. Por categoria")
-                        print("4. Por categoria")
+                        print("4. Regresar")
                         tipo=int(input("Seleccione: "))
                         if tipo==1:
                             codigo=input("Codigo: ")
@@ -66,6 +66,7 @@ class Program:
                             categoria=input("Categoria: ")
                             resultados=Buscar_Producto(inv.inventario, categoria=categoria)
                         elif tipo==4:
+                            print("Regresando")
                             return
                         else:
                             print("Opcion invalida")
