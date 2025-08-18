@@ -81,6 +81,8 @@ class Program:
                     case 1:
                         inv.registrar_producto()
                     case 2:
+                        for products in inv.inventario.values():
+                            products.mostrar_producto()
                         pass
                     case 3:
                         pass
