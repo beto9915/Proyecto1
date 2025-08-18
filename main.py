@@ -66,6 +66,9 @@ class Program:
                             categoria=input("Categoria: ")
                             resultados=Buscar_Producto(inv.inventario, categoria=categoria)
                         elif tipo==4:
+                            return
+                        else:
+                            print("Opcion invalida")
                         pass
                     case 4:
                         aux = int(input("""Desea:
