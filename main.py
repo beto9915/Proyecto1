@@ -3,10 +3,10 @@ def Ordenar(productos, clave="codigo"):
     def ordenador(lista):
         if len(lista) <= 1:
             return lista
-        pivote = lista[len(lista)][clave]
-        primeros = [x for x in lista if x["codigo"] < pivote]
-        centro = [x for x in lista if x["codigo"] == pivote]
-        ultimos = [x for x in lista if x["codigo"] > pivote]
+        pivote = lista[len(lista)//2][clave]
+        primeros = [x for x in lista if x[clave] < pivote]
+        centro = [x for x in lista if x[clave] == pivote]
+        ultimos = [x for x in lista if x[clave] > pivote]
         return ordenador(primeros) + centro + ordenador(ultimos)
     return ordenador(lista_productos)
 
