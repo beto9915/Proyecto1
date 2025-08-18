@@ -44,8 +44,25 @@ class Program:
                 case 1:
                     inv.registrar_producto()
                 case 2:
+                    for prod in inv.inventario.values():
+                        prod.mostrar_producto()
                     pass
                 case 3:
+                    print("Como desea buscar el producto?")
+                    print("1. Por nombre")
+                    print("2. Por categoria")
+                    print("3. Por codigo")
+                    print("4. Regresar")
+                    tipo=int(input("Seleccione: "))
+                    if tipo==1:
+                        codigo=input("Ingrese el codigo: ")
+                        resultados=Buscar_Producto(inv.inventario,codigo=codigo)
+                    elif tipo==2:
+                        nombre=input("Ingrese el nombre: ")
+                        resultados=Buscar_Producto(inv.inventario, nombre=nombre)
+                    elif tipo==3:
+                        categoria=input("Ingrese el categoria: ")
+
                     pass
                 case 4:
                     aux=int(input("""Desea:
