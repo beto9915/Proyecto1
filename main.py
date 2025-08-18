@@ -43,4 +43,17 @@ class Inventario:
             print("producto no encontrado...")
             return
     def eliminar_producto(self):
-        pass
+        codigo=input("Ingrese codigo de producto a eliminar: ")
+        if codigo in self.inventario.keys():
+            print(f"Esta seguro de eliminar el producto: {self.inventario['nombre']}? (Y/N)")
+            respuesta=input("Seleccione: ").upper()
+            if respuesta=="Y":
+                del self.inventario[codigo]
+            else:
+                print("Producto no eliminado...")
+                print("\npresione ENTER para continuar...")
+                input()
+        else:
+            print("Codigo no encontrado, intente de nuevo...")
+            print("\presione ENTER para continuar...")
+            return
