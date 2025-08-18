@@ -29,6 +29,41 @@ def Buscar_Producto(productos,codigo=None,nombre=None,categoria=None):
     return resultados
 
 class Program:
+    opcion=0
+    while opcion!=5:
+        print("="*45+"MENU HIPER PAIZ"+"="*45)
+        print("1. Registrar producto")
+        print("2. Enlistar productos registrados")
+        print("3. Buscar producto")
+        print("4. Actualizar y eliminar")
+        print("5. Salir")
+        try:
+            opcion=int(input("Seleccione: "))
+            inv = Inventario
+            match opcion:
+                case 1:
+                    inv.registrar_producto()
+                case 2:
+                    for product in inv.inventario.values():
+                        product.mostrar_producto()
+                    pass
+                case 3:
+                    pass
+                case 4:
+                    aux=int(input("""Desea:
+                    1. Actualizar
+                    2. Eliminar"""))
+                    if aux==1:
+                        inv.actualizar_producto()
+                    elif aux==2:
+                        inv.eliminar_producto()
+                    else:
+                        print("Opcion no valida...")
+                        return
+                case 5:
+                    print("Gracias por usar sistema de Hiper Paiz!")
+        except ValueError:
+            print("La opcion debe ser un numero entero")
     @staticmethod
     def main():
         opcion = 0
@@ -94,7 +129,7 @@ class Inventario:
             else:
                 categoria=input("Ingrese categoria: ")
                 precio=float(input("Ingrese el precio: "))
-                stock=int(input("Ingrese el stock disponible: "))
+                stock=int(input("Ingrese el stock disponible"))
         self.inventario[codigo]=Producto(codigo, nombre, categoria, precio, stock)
         print("Producto registrado con exito! "*3)
     def actualizar_producto(self):
@@ -113,7 +148,7 @@ class Inventario:
     def eliminar_producto(self):
         codigo=input("Ingrese codigo de producto a eliminar: ")
         if codigo in self.inventario.keys():
-            print(f"Esta seguro de eliminar el producto: {self.inventario[codigo].nombre}? (Y/N)")
+            print(f"Esta seguro de eliminar el producto: {self.inventario['nombre']}? (Y/N)")
             respuesta=input("Seleccione: ").upper()
             if respuesta=="Y":
                 del self.inventario[codigo]
