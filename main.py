@@ -134,7 +134,7 @@ class Inventario:
     def eliminar_producto(self):
         codigo=input("Ingrese codigo de producto a eliminar: ")
         if codigo in self.inventario.keys():
-            print(f"Esta seguro de eliminar el producto: {self.inventario['nombre']}? (Y/N)")
+            print(f"Esta seguro de eliminar el producto: {self.inventario[codigo].nombre}? (Y/N)")
             respuesta=input("Seleccione: ").upper()
             if respuesta=="Y":
                 del self.inventario[codigo]
