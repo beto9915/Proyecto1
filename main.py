@@ -150,6 +150,9 @@ class Inventario:
             respuesta=input("Seleccione: ").upper()
             if respuesta=="Y":
                 del self.inventario[codigo]
+                print("Producto eliminado con exito!...")
+                print("\npresione ENTER para continuar...")
+                input()
             else:
                 print("Producto no eliminado...")
                 print("\npresione ENTER para continuar...")
