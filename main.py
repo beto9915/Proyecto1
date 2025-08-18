@@ -74,7 +74,8 @@ class Program:
                     case 4:
                         aux = int(input("""Desea:
                             1. Actualizar
-                            2. Eliminar"""))
+                            2. Eliminar
+                            Seleccione: """))
                         if aux == 1:
                             inv.actualizar_producto()
                         elif aux == 2:
