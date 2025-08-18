@@ -115,7 +115,7 @@ class Inventario:
             else:
                 categoria=input("Ingrese categoria: ")
                 precio=float(input("Ingrese el precio: "))
-                stock=int(input("Ingrese el stock disponible"))
+                stock=int(input("Ingrese el stock disponible: "))
         self.inventario[codigo]=Producto(codigo, nombre, categoria, precio, stock)
         print("Producto registrado con exito! "*3)
     def actualizar_producto(self):
