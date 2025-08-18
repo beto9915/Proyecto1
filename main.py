@@ -41,6 +41,8 @@ class Inventario:
             print("Producto actualizado con exito! "*3)
         else:
             print("producto no encontrado...")
+            print("\npresione ENTER para continuar...")
+            input()
             return
     def eliminar_producto(self):
         codigo=input("Ingrese codigo de producto a eliminar: ")
