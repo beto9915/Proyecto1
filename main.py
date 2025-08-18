@@ -29,43 +29,6 @@ def Buscar_Producto(productos,codigo=None,nombre=None,categoria=None):
     return resultados
 
 class Program:
-    @staticmethod
-    def main():
-        opcion = 0
-        inv = Inventario()
-        while opcion != 5:
-            print("=" * 45 + "MENU HIPER PAIZ" + "=" * 45)
-            print("1. Registrar producto")
-            print("2. Enlistar productos registrados")
-            print("3. Buscar producto")
-            print("4. Actualizar y eliminar")
-            print("5. Salir")
-            try:
-                opcion = int(input("Seleccione: "))
-
-                match opcion:
-                    case 1:
-                        inv.registrar_producto()
-                    case 2:
-                        pass
-                    case 3:
-                        pass
-                    case 4:
-                        aux = int(input("""Desea:
-                            1. Actualizar
-                            2. Eliminar"""))
-                        if aux == 1:
-                            inv.actualizar_producto()
-                        elif aux == 2:
-                            inv.eliminar_producto()
-                        else:
-                            print("Opcion no valida...")
-                            print("\npresione ENTER para continuar...")
-                            input()
-                    case 5:
-                        print("Gracias por usar sistema de Hiper Paiz!")
-            except ValueError:
-                print("La opcion debe ser un numero entero")
     opcion=0
     while opcion!=5:
         print("="*45+"MENU HIPER PAIZ"+"="*45)
@@ -81,25 +44,8 @@ class Program:
                 case 1:
                     inv.registrar_producto()
                 case 2:
-                    for prod in inv.inventario.values():
-                        prod.mostrar_producto()
                     pass
                 case 3:
-                    print("Como desea buscar el producto?")
-                    print("1. Por nombre")
-                    print("2. Por categoria")
-                    print("3. Por codigo")
-                    print("4. Regresar")
-                    tipo=int(input("Seleccione: "))
-                    if tipo==1:
-                        codigo=input("Ingrese el codigo: ")
-                        resultados=Buscar_Producto(inv.inventario,codigo=codigo)
-                    elif tipo==2:
-                        nombre=input("Ingrese el nombre: ")
-                        resultados=Buscar_Producto(inv.inventario, nombre=nombre)
-                    elif tipo==3:
-                        categoria=input("Ingrese el categoria: ")
-
                     pass
                 case 4:
                     aux=int(input("""Desea:
