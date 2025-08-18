@@ -39,9 +39,10 @@ class Program:
         print("5. Salir")
         try:
             opcion=int(input("Seleccione: "))
+            inv = Inventario
             match opcion:
                 case 1:
-                    Inventario.registrar_producto()
+                    inv.registrar_producto()
                 case 2:
                     pass
                 case 3:
@@ -51,9 +52,9 @@ class Program:
                     1. Actualizar
                     2. Eliminar"""))
                     if aux==1:
-                        Inventario.actualizar_producto()
+                        inv.actualizar_producto()
                     elif aux==2:
-                        Inventario.eliminar_producto()
+                        inv.eliminar_producto()
                     else:
                         print("Opcion no valida...")
                         return
