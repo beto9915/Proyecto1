@@ -82,7 +82,8 @@ class Program:
                     case 4:
                         aux = int(input("""Desea:
                             1. Actualizar
-                            2. Eliminar"""))
+                            2. Eliminar
+                            Seleccione: """))
                         if aux == 1:
                             inv.actualizar_producto()
                         elif aux == 2:
@@ -115,7 +116,7 @@ class Inventario:
             return
         else:
             nombre=input("Ingrese el nombre del producto: ")
-            if nombre in self.inventario[codigo].nombre:
+            if any(prod.nombre==nombre for prod in self.inventario.values()):
                 print("nombre ya registrado...")
                 print("\npresione ENTER para continuar...")
                 input()
@@ -123,7 +124,7 @@ class Inventario:
             else:
                 categoria=input("Ingrese categoria: ")
                 precio=float(input("Ingrese el precio: "))
-                stock=int(input("Ingrese el stock disponible"))
+                stock=int(input("Ingrese el stock disponible: "))
         self.inventario[codigo]=Producto(codigo, nombre, categoria, precio, stock)
         print("Producto registrado con exito! "*3)
     def actualizar_producto(self):
@@ -131,8 +132,8 @@ class Inventario:
         if codigo in self.inventario.keys():
             stock=int(input("Ingrese nuevo stock: "))
             precio=float(input("Ingrese nuevo precio: "))
-            self.inventario[codigo][stock]=stock
-            self.inventario[codigo][precio]=precio
+            self.inventario[codigo].stock=stock
+            self.inventario[codigo].precio=precio
             print("Producto actualizado con exito! "*3)
         else:
             print("producto no encontrado...")
@@ -142,7 +143,7 @@ class Inventario:
     def eliminar_producto(self):
         codigo=input("Ingrese codigo de producto a eliminar: ")
         if codigo in self.inventario.keys():
-            print(f"Esta seguro de eliminar el producto: {self.inventario['nombre']}? (Y/N)")
+            print(f"Esta seguro de eliminar el producto: {self.inventario[codigo].nombre}? (Y/N)")
             respuesta=input("Seleccione: ").upper()
             if respuesta=="Y":
                 del self.inventario[codigo]
