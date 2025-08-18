@@ -27,4 +27,3 @@ def Buscar_Producto(productos,codigo=None,nombre=None,categoria=None):
             resultados.append(producto)
             continue
     return resultados
-####
