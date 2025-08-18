@@ -20,7 +20,7 @@ def Buscar_Producto(productos,codigo=None,nombre=None,categoria=None):
         return []
     resultados=[]
     lista_productos=[
-        {"codigo":cod,**datos} for cod, datos in productos.items()
+        {"codigo":cod,**vars(datos)} for cod, datos in productos.items()
     ]
     for producto in lista_productos:
         if codigo and producto["codigo"]==codigo:
