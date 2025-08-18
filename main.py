@@ -139,6 +139,8 @@ class Inventario:
                 stock=int(input("Ingrese el stock disponible: "))
         self.inventario[codigo]=Producto(codigo, nombre, categoria, precio, stock)
         print("Producto registrado con exito! "*3)
+        print("\npresione ENTER para continuar...")
+        input()
     def actualizar_producto(self):
         codigo=input("Ingrese el codigo de producto a buscar: ")
         if codigo in self.inventario.keys():
@@ -147,6 +149,8 @@ class Inventario:
             self.inventario[codigo].stock=stock
             self.inventario[codigo].precio=precio
             print("Producto actualizado con exito! "*3)
+            print("\npresione ENTER para continuar...")
+            input()
         else:
             print("producto no encontrado...")
             print("\npresione ENTER para continuar...")
