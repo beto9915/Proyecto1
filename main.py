@@ -2,7 +2,7 @@ def Ordenar(productos, clave="codigo"):
     if not productos:
         print("No hay productos registrados")
         return []
-    lista_productos=[{"codigo":cod,**datos} for cod, datos in productos.items()]
+    lista_productos=[{"codigo":cod,**vars(datos)} for cod, datos in productos.items()]
     def ordenador(lista):
         if len(lista) <= 1:
             return lista
@@ -57,8 +57,11 @@ class Program:
                         if not inv.inventario:
                             print("No hay productos registrados")
                         else:
-                            for prod in inv.inventario:
-                                prod.mostrar_producto()
+                            productos_ordenados=Ordenar(inv.inventario, clave="codigo")
+                            print("\n* * * Inventario: * * *")
+                            for prod_dict in productos_ordenados:
+                                p=Producto(**prod_dict)
+                                p.mostrar_producto()
                         pass
                     case 3:
                         print("Como desea buscar el producto?")
