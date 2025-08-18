@@ -168,4 +168,7 @@ class Inventario:
             print("\npresione ENTER para continuar...")
             input()
             return
+class entrada:
+    def regresar(self):
+        pass
 Program.main()
