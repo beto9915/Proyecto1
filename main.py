@@ -1,40 +1,50 @@
-def Ordenar(productos, clave="codigo"):
-    if not productos:
-        print("No hay productos registrados")
-        return []
-    lista_productos=[{"codigo":cod,**vars(datos)} for cod, datos in productos.items()]
-    def ordenador(lista):
-        if len(lista) <= 1:
-            return lista
-        pivote = lista[len(lista)//2][clave]
-        primeros = [x for x in lista if x[clave] < pivote]
-        centro = [x for x in lista if x[clave] == pivote]
-        ultimos = [x for x in lista if x[clave] > pivote]
-        return ordenador(primeros) + centro + ordenador(ultimos)
-    return ordenador(lista_productos)
+class Ordenar:
+    @staticmethod
+    def por_codigo(productos):
+        if not productos:
+            print("No hay productos registrados")
+            return []
+
+        lista_productos = [{"codigo": cod, **vars(datos)} for cod, datos in productos.items()]
+
+        def ordenador(lista):
+            if len(lista) <= 1:
+                return lista
+            pivote = lista[len(lista)//2]["codigo"]
+            primeros = [x for x in lista if x["codigo"] < pivote]
+            centro   = [x for x in lista if x["codigo"] == pivote]
+            ultimos  = [x for x in lista if x["codigo"] > pivote]
+            return ordenador(primeros) + centro + ordenador(ultimos)
+
+        return ordenador(lista_productos)
 
 
-def Buscar_Producto(productos,codigo=None,nombre=None,categoria=None):
-    if not productos:
-        print("No hay productos registrados")
-        return []
-    resultados=[]
-    lista_productos=[
-        {"codigo":cod,**vars(datos)} for cod, datos in productos.items()
-    ]
-    for producto in lista_productos:
-        if codigo and producto["codigo"]==codigo:
-            resultados.append(producto)
-            continue
-        if nombre and nombre.lower() in producto["nombre"].lower():
-            resultados.append(producto)
-            continue
-        if categoria and categoria.lower() in producto["categoria"].lower():
-            resultados.append(producto)
-            continue
-    if not resultados:
-        print("No se encontro ninguna coincidencia")
-    return resultados
+
+class Buscar:
+    @staticmethod
+    def productos(productos, codigo=None, nombre=None, categoria=None):
+        if not productos:
+            print("No hay productos registrados")
+            return []
+
+        resultados = []
+        lista_productos = [{"codigo": cod, **vars(datos)} for cod, datos in productos.items()]
+
+        for producto in lista_productos:
+            if codigo and producto["codigo"] == codigo:
+                resultados.append(producto)
+                continue
+            if nombre and nombre.lower() in producto["nombre"].lower():
+                resultados.append(producto)
+                continue
+            if categoria and categoria.lower() in producto["categoria"].lower():
+                resultados.append(producto)
+                continue
+
+        if not resultados:
+            print("No se encontró ninguna coincidencia")
+        return resultados
+
 
 class Program:
     @staticmethod
@@ -57,7 +67,7 @@ class Program:
                         if not inv.inventario:
                             print("No hay productos registrados")
                         else:
-                            productos_ordenados=Ordenar(inv.inventario, clave="codigo")
+                            productos_ordenados=Ordenar.por_codigo(inv.inventario)
                             print("\n* * * Inventario: * * *")
                             for prod_dict in productos_ordenados:
                                 p=Producto(**prod_dict)
@@ -72,13 +82,13 @@ class Program:
                         tipo=int(input("Seleccione: "))
                         if tipo==1:
                             codigo=input("Codigo: ")
-                            resultados=Buscar_Producto(inv.inventario, codigo=codigo)
+                            resultados=Buscar.productos(inv.inventario, codigo=codigo)
                         elif tipo==2:
                             nombre=input("Nombre: ")
-                            resultados=Buscar_Producto(inv.inventario, nombre=nombre)
+                            resultados=Buscar.productos(inv.inventario, nombre=nombre)
                         elif tipo==3:
                             categoria=input("Categoria: ")
-                            resultados=Buscar_Producto(inv.inventario, categoria=categoria)
+                            resultados=Buscar.productos(inv.inventario, categoria=categoria)
                         elif tipo==4:
                             print("Regresando")
                             return
