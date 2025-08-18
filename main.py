@@ -188,6 +188,20 @@ class Inventario:
             input()
             return
 class entrada:
-    def regresar(self):
-        pass
+    def entrada_usuario(prompt, tipo=str, permitir_salir=True):
+        while True:
+            valor = input(prompt).strip()
+
+            if permitir_salir and (valor.lower() == "salir" or valor == "0"):
+                return None
+            try:
+                if tipo == int:
+                    return int(valor)
+                elif tipo == float:
+                    return float(valor)
+                else:
+                    return valor
+            except ValueError:
+                print(f"Entrada inválida. Se esperaba {tipo.__name__}.")
+
 Program.main()
