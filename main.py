@@ -57,5 +57,6 @@ class Inventario:
                 input()
         else:
             print("Codigo no encontrado, intente de nuevo...")
-            print("\presione ENTER para continuar...")
+            print("\npresione ENTER para continuar...")
+            input()
             return
