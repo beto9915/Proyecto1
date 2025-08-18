@@ -60,7 +60,8 @@ class Program:
                             inv.eliminar_producto()
                         else:
                             print("Opcion no valida...")
-                            return
+                            print("\npresione ENTER para continuar...")
+                            input()
                     case 5:
                         print("Gracias por usar sistema de Hiper Paiz!")
             except ValueError:
