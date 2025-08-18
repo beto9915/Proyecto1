@@ -106,7 +106,7 @@ class Inventario:
             return
         else:
             nombre=input("Ingrese el nombre del producto: ")
-            if nombre in self.inventario[codigo].nombre:
+            if any(prod.nombre==nombre for prod in self.inventario.values()):
                 print("nombre ya registrado...")
                 print("\npresione ENTER para continuar...")
                 input()
