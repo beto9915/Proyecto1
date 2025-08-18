@@ -189,6 +189,7 @@ class Inventario:
             input()
             return
 class Entrada:
+    @staticmethod
     def entrada_usuario(prompt, tipo=str, permitir_salir=True):
         while True:
             valor = input(prompt).strip()
