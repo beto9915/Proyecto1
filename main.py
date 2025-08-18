@@ -79,17 +79,19 @@ class Program:
                         print("2. Por nombre")
                         print("3. Por categoria")
                         print("4. Regresar")
-                        tipo=int(input("Seleccione: "))
-                        if tipo==1:
+                        tipo=input("Seleccione: ")
+                        if tipo.lower() == "salir":
+                            print("Regresando")
+                        if tipo=="1":
                             codigo=input("Codigo: ")
                             resultados=Buscar.productos(inv.inventario, codigo=codigo)
-                        elif tipo==2:
+                        elif tipo=="2":
                             nombre=input("Nombre: ")
                             resultados=Buscar.productos(inv.inventario, nombre=nombre)
-                        elif tipo==3:
+                        elif tipo=="3":
                             categoria=input("Categoria: ")
                             resultados=Buscar.productos(inv.inventario, categoria=categoria)
-                        elif tipo==4:
+                        elif tipo=="4":
                             print("Regresando")
                             return
                         else:
