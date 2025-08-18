@@ -29,43 +29,39 @@ def Buscar_Producto(productos,codigo=None,nombre=None,categoria=None):
     return resultados
 
 class Program:
-    @staticmethod
-    def main():
-        opcion = 0
-        inv = Inventario()
-        while opcion != 5:
-            print("=" * 45 + "MENU HIPER PAIZ" + "=" * 45)
-            print("1. Registrar producto")
-            print("2. Enlistar productos registrados")
-            print("3. Buscar producto")
-            print("4. Actualizar y eliminar")
-            print("5. Salir")
-            try:
-                opcion = int(input("Seleccione: "))
-
-                match opcion:
-                    case 1:
-                        inv.registrar_producto()
-                    case 2:
-                        pass
-                    case 3:
-                        pass
-                    case 4:
-                        aux = int(input("""Desea:
-                            1. Actualizar
-                            2. Eliminar"""))
-                        if aux == 1:
-                            inv.actualizar_producto()
-                        elif aux == 2:
-                            inv.eliminar_producto()
-                        else:
-                            print("Opcion no valida...")
-                            print("\npresione ENTER para continuar...")
-                            input()
-                    case 5:
-                        print("Gracias por usar sistema de Hiper Paiz!")
-            except ValueError:
-                print("La opcion debe ser un numero entero")
+    opcion=0
+    while opcion!=5:
+        print("="*45+"MENU HIPER PAIZ"+"="*45)
+        print("1. Registrar producto")
+        print("2. Enlistar productos registrados")
+        print("3. Buscar producto")
+        print("4. Actualizar y eliminar")
+        print("5. Salir")
+        try:
+            opcion=int(input("Seleccione: "))
+            inv = Inventario
+            match opcion:
+                case 1:
+                    inv.registrar_producto()
+                case 2:
+                    pass
+                case 3:
+                    pass
+                case 4:
+                    aux=int(input("""Desea:
+                    1. Actualizar
+                    2. Eliminar"""))
+                    if aux==1:
+                        inv.actualizar_producto()
+                    elif aux==2:
+                        inv.eliminar_producto()
+                    else:
+                        print("Opcion no valida...")
+                        return
+                case 5:
+                    print("Gracias por usar sistema de Hiper Paiz!")
+        except ValueError:
+            print("La opcion debe ser un numero entero")
 class Producto:
     def __init__(self, codigo, nombre, categoria, precio, stock):
         self.codigo=codigo
@@ -104,8 +100,8 @@ class Inventario:
         if codigo in self.inventario.keys():
             stock=int(input("Ingrese nuevo stock: "))
             precio=float(input("Ingrese nuevo precio: "))
-            self.inventario[codigo].stock=stock
-            self.inventario[codigo].precio=precio
+            self.inventario[codigo][stock]=stock
+            self.inventario[codigo][precio]=precio
             print("Producto actualizado con exito! "*3)
         else:
             print("producto no encontrado...")
@@ -128,4 +124,3 @@ class Inventario:
             print("\npresione ENTER para continuar...")
             input()
             return
-Program.main()
