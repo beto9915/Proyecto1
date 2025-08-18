@@ -32,6 +32,7 @@ class Program:
     @staticmethod
     def main():
         opcion = 0
+        inv = Inventario()
         while opcion != 5:
             print("=" * 45 + "MENU HIPER PAIZ" + "=" * 45)
             print("1. Registrar producto")
@@ -41,7 +42,7 @@ class Program:
             print("5. Salir")
             try:
                 opcion = int(input("Seleccione: "))
-                inv=Inventario
+
                 match opcion:
                     case 1:
                         inv.registrar_producto()
