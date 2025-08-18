@@ -54,8 +54,11 @@ class Program:
                     case 1:
                         inv.registrar_producto()
                     case 2:
-                        for products in inv.inventario.values():
-                            products.mostrar_producto()
+                        if not inv.inventario:
+                            print("No hay productos registrados")
+                        else:
+                            for prod in inv.inventario:
+                                prod.mostrar_producto()
                         pass
                     case 3:
                         print("Como desea buscar el producto?")
