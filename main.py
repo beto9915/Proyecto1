@@ -81,8 +81,6 @@ class Program:
                         print("3. Por categoria")
                         print("4. Regresar")
                         tipo=input("Seleccione: ")
-                        if tipo.lower() == "salir":
-                            print("Regresando")
                         if tipo=="1":
                             codigo=input("Codigo: ")
                             resultados=Buscar.productos(inv.inventario, codigo=codigo)
