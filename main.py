@@ -54,8 +54,18 @@ class Program:
                         print("1. Por codigo")
                         print("2. Por nombre")
                         print("3. Por categoria")
+                        print("4. Por categoria")
                         tipo=int(input("Seleccione: "))
-
+                        if tipo==1:
+                            codigo=input("Codigo: ")
+                            resultados=Buscar_Producto(inv.inventario, codigo=codigo)
+                        elif tipo==2:
+                            nombre=input("Nombre: ")
+                            resultados=Buscar_Producto(inv.inventario, nombre=nombre)
+                        elif tipo==3:
+                            categoria=input("Categoria: ")
+                            resultados=Buscar_Producto(inv.inventario, categoria=categoria)
+                        elif tipo==4:
                         pass
                     case 4:
                         aux = int(input("""Desea:
