@@ -49,6 +49,7 @@ class Buscar:
 class Program:
     @staticmethod
     def main():
+        entrada=Entrada()
         opcion = 0
         inv = Inventario()
         while opcion != 5:
@@ -59,7 +60,7 @@ class Program:
             print("4. Actualizar y eliminar")
             print("5. Salir")
             try:
-                opcion = int(input("Seleccione: "))
+                opcion = entrada.entrada_usuario("Seleccione: ", tipo=int)
                 match opcion:
                     case 1:
                         inv.registrar_producto()
@@ -185,7 +186,7 @@ class Inventario:
             print("\npresione ENTER para continuar...")
             input()
             return
-class entrada:
+class Entrada:
     def entrada_usuario(prompt, tipo=str, permitir_salir=True):
         while True:
             valor = input(prompt).strip()
