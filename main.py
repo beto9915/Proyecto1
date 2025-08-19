@@ -1,22 +1,23 @@
 class Ordenar:
     @staticmethod
-    def por_codigo(productos):
+    def ordenar(productos, clave="codigo"):
         if not productos:
             print("No hay productos registrados")
             return []
 
         lista_productos = [{"codigo": cod, **vars(datos)} for cod, datos in productos.items()]
 
-        def ordenador(lista):
+        def quicksort(lista):
             if len(lista) <= 1:
                 return lista
-            pivote = lista[len(lista)//2]["codigo"]
-            primeros = [x for x in lista if x["codigo"] < pivote]
-            centro   = [x for x in lista if x["codigo"] == pivote]
-            ultimos  = [x for x in lista if x["codigo"] > pivote]
-            return ordenador(primeros) + centro + ordenador(ultimos)
+            pivote = lista[len(lista)//2][clave]
+            menores = [x for x in lista if x[clave] < pivote]
+            iguales = [x for x in lista if x[clave] == pivote]
+            mayores = [x for x in lista if x[clave] > pivote]
+            return quicksort(menores) + iguales + quicksort(mayores)
 
-        return ordenador(lista_productos)
+        return quicksort(lista_productos)
+
 
 
 
