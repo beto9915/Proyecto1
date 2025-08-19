@@ -129,21 +129,21 @@ class Inventario:
     def __init__(self):
         self.inventario={}
     def registrar_producto(self):
-        codigo=input("Ingrese codigo de producto: ")
+        codigo=input("Ingrese codigo de producto: ").upper()
         if codigo in self.inventario.keys():
             print("codigo ya registrado...")
             print("\npresione ENTER para continuar..")
             input()
             return
         else:
-            nombre=input("Ingrese el nombre del producto: ")
+            nombre=input("Ingrese el nombre del producto: ").upper()
             if any(prod.nombre==nombre for prod in self.inventario.values()):
                 print("nombre ya registrado...")
                 print("\npresione ENTER para continuar...")
                 input()
                 return
             else:
-                categoria=input("Ingrese categoria: ")
+                categoria=input("Ingrese categoria: ").upper()
                 precio=float(input("Ingrese el precio: "))
                 stock=int(input("Ingrese el stock disponible: "))
         self.inventario[codigo]=Producto(codigo, nombre, categoria, precio, stock)
@@ -185,6 +185,7 @@ class Inventario:
             input()
             return
 class Entrada:
+    @staticmethod
     def entrada_usuario(prompt, tipo=str, permitir_salir=True):
         while True:
             valor = input(prompt).strip()
