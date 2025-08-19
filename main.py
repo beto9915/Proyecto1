@@ -34,10 +34,10 @@ class Buscar:
             if codigo and producto["codigo"] == codigo:
                 resultados.append(producto)
                 continue
-            if nombre and nombre.lower() in producto["nombre"].lower():
+            if nombre and nombre.upper() in producto["nombre"].upper():
                 resultados.append(producto)
                 continue
-            if categoria and categoria.lower() in producto["categoria"].lower():
+            if categoria and categoria.upper() in producto["categoria"].upper():
                 resultados.append(producto)
                 continue
 
@@ -80,17 +80,18 @@ class Program:
                         print("2. Por nombre")
                         print("3. Por categoria")
                         print("4. Regresar")
-                        tipo=input("Seleccione: ")
-                        if tipo=="1":
-                            codigo=input("Codigo: ")
+                        tipo=entrada.entrada_usuario("Seleccione: ", tipo=int)
+                        resultados=[]
+                        if tipo==1:
+                            codigo=entrada.entrada_usuario("Codigo: ", tipo=str)
                             resultados=Buscar.productos(inv.inventario, codigo=codigo)
-                        elif tipo=="2":
-                            nombre=input("Nombre: ")
+                        elif tipo==2:
+                            nombre=entrada.entrada_usuario("Nombre: ", tipo=str)
                             resultados=Buscar.productos(inv.inventario, nombre=nombre)
-                        elif tipo=="3":
-                            categoria=input("Categoria: ")
+                        elif tipo==3:
+                            categoria=entrada.entrada_usuario("Categoria: ", tipo=str)
                             resultados=Buscar.productos(inv.inventario, categoria=categoria)
-                        elif tipo=="4":
+                        elif tipo==4:
                             print("Regresando")
                             return
                         else:
@@ -128,35 +129,50 @@ class Producto:
         print(f"Codigo de producto: {self.codigo}, Nombre: {self.nombre}, Categoria: {self.categoria}, Precio: {self.precio}, Stock: {self.stock}\n")
         print("="*45)
 class Inventario:
+
     def __init__(self):
         self.inventario={}
     def registrar_producto(self):
-        codigo=input("Ingrese codigo de producto: ").upper()
+        entrada = Entrada()
+        codigo=entrada.entrada_usuario("Ingrese codigo: (o escriba 'salir' o presione '0' para regresar): ", tipo=str)
+        if codigo==None:
+            return
+        codigo=codigo.upper()
         if codigo in self.inventario.keys():
             print("codigo ya registrado...")
             print("\npresione ENTER para continuar..")
             input()
             return
         else:
-            nombre=input("Ingrese el nombre del producto: ").upper()
+            nombre=entrada.entrada_usuario("Ingrese nombre: (o escriba 'salir' o presione '0' para regresar): ", tipo=str)
+            if nombre==None:
+                return
+            nombre=nombre.upper()
             if any(prod.nombre==nombre for prod in self.inventario.values()):
                 print("nombre ya registrado...")
                 print("\npresione ENTER para continuar...")
                 input()
                 return
             else:
-                categoria=input("Ingrese categoria: ").upper()
-                precio=float(input("Ingrese el precio: "))
-                stock=int(input("Ingrese el stock disponible: "))
+                categoria=entrada.entrada_usuario("Ingrese la categoria (o escriba 'salir' o presione '0' para regresar): ", tipo=str)
+                if categoria==None:
+                    return
+                categoria=categoria.upper()
+                precio=entrada.entrada_usuario("Ingrese el precio: (o escriba 'salir' o presione '0' para regresar): ", tipo=float)
+                stock=entrada.entrada_usuario("Ingrese el stock disponible (o escriba 'salir' o presione '0' para regresar): ", tipo=int)
         self.inventario[codigo]=Producto(codigo, nombre, categoria, precio, stock)
         print("Producto registrado con exito! "*3)
         print("\npresione ENTER para continuar...")
         input()
     def actualizar_producto(self):
-        codigo=input("Ingrese el codigo de producto a buscar: ")
+        entrada=Entrada()
+        codigo=entrada.entrada_usuario("Ingrese el codigo a actualizar (o escriba 'salir' o presione '0' para regresar): ", tipo=str)
+        if codigo==None:
+            return
+        codigo=codigo.upper()
         if codigo in self.inventario.keys():
-            stock=int(input("Ingrese nuevo stock: "))
-            precio=float(input("Ingrese nuevo precio: "))
+            stock=entrada.entrada_usuario("Ingrese el nuevo stock (o escriba 'salir' o presione '0' para regresar): ", tipo=int)
+            precio=entrada.entrada_usuario("Ingrese el nuevo precio (o escriba 'salir' o presione '0' para regresar): ", tipo=float)
             self.inventario[codigo].stock=stock
             self.inventario[codigo].precio=precio
             print("Producto actualizado con exito! "*3)
@@ -168,7 +184,11 @@ class Inventario:
             input()
             return
     def eliminar_producto(self):
-        codigo=input("Ingrese codigo de producto a eliminar: ")
+        entrada=Entrada()
+        codigo=entrada.entrada_usuario("Ingrese el codigo del producto a eliminar (o escriba 'salir' o presione '0' para regresar): ", tipo=str)
+        if codigo==None:
+            return
+        codigo=codigo.upper()
         if codigo in self.inventario.keys():
             print(f"Esta seguro de eliminar el producto: {self.inventario[codigo].nombre}? (Y/N)")
             respuesta=input("Seleccione: ").upper()
