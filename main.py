@@ -18,9 +18,6 @@ class Ordenar:
 
         return quicksort(lista_productos)
 
-
-
-
 class Buscar:
     @staticmethod
     def productos(productos, codigo=None, nombre=None, categoria=None):
